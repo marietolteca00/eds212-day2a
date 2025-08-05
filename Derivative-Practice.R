@@ -49,3 +49,18 @@ y <- seq(from = -0.4, to = 2.0, by = 0.1)
 
 #Evaluate the Slope of T(y) at each of those values
 eval(dt_dy)
+
+#Plotting Example
+library(ggplot2)
+library(palmerpenguins)
+
+ggplot(data = penguins, aes(x = body_mass_g, y = flipper_length_mm)) +
+  geom_point(aes(color = species)) +
+  scale_color_manual(values = c("darkorange", "purple", "cyan4"))+
+  labs(x = "Body mass(g)",
+       y = "Flipper length (mm)",
+       title = "Palmer penguins size measurements",
+       subtitle = "Palmer archipelago, Antartica (2007 - 2009)",
+       caption = "Collected by Dr. Kristen Gorman") +
+  facet_wrap(~island) +
+  theme_minimal()
